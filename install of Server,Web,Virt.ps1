@@ -1,6 +1,10 @@
 import-module RemoteDesktop
-$compname = $env:COMPUTERNAME 
-#this is a test lien 
+$compname = $env:COMPUTERNAME.ToString()
+$username = $env:USERNAME.ToString()
+
+#this is a test line
 #Write-Output $compname
-New-session Deployment -ConnectionBroker "this will be named later" -WebAccessServer RD- "Name later" -SessionHost "Name later"
+#Write-Output $username
+$systemname = $username +"." + $compname + ".com"
+New-SessionDeployment -ConnectionBroker $systemname -WebAccessServer -RD $systemname -SessionHost $systemname
 #then there is some validation and deployment 
